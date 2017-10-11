@@ -1,8 +1,10 @@
 class Listing < ApplicationRecord
+  include ImageUploader::Attachment.new(:image) 
+
   geocoded_by :full_address
   after_validation :geocode
 
-  monetize :night_fee_cents, :cleaning_fee_cents
+  # monetize :night_fee_cents, :cleaning_fee_cents
 
 
   def country
@@ -16,7 +18,6 @@ class Listing < ApplicationRecord
   def night_fee 
     Money.new(night_fee_cents, 'AUD').format
   end
-  
 
   def cleaning_fee 
     Money.new(cleaning_fee_cents, 'AUD').format

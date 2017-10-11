@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :listing_image %>
+  </div>
+
+  <div class="field">
     <%= form.label :street_address %>
     <%= form.text_field :street_address, id: :listing_street_address %>
   </div>

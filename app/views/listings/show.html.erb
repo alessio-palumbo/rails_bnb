@@ -5,6 +5,12 @@
   <%= @listing.title %>
 </p>
 
+<% if @listing.image %>
+  <p>
+    <%= image_tag @listing.image_url %>
+  </p>
+<% end %>
+
 <p>
   <strong>Address:</strong>
   <%= @listing.full_address %>

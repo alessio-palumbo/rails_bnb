@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Street address</th>
       <th>City</th>
       <th>Country code</th>
@@ -23,6 +24,9 @@
     <% @listings.each do |listing| %>
       <tr>
         <td><%= listing.title %></td>
+        <% if listing.image %>
+          <td><%= image_tag listing.image_url %>
+        <% end %>
         <td><%= listing.full_address %></td>
         <td><%= listing.bed_count %></td>
         <td><%= listing.bedroom_count %></td>
