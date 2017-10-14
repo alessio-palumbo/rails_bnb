@@ -1,55 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<% if @listing.image %>
-  <p>
-    <%= image_tag @listing.image_url %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Address:</strong>
-  <%= @listing.full_address %>
-</p>
-
-<p>
-  <strong>Coords:</strong>
-  <%= @listing.latitude %>, <%= @listing.longitude %>
-</p>
-
-<p>
-  <strong>Bed count:</strong>
-  <%= @listing.bed_count %>
-</p>
-
-<p>
-  <strong>Bedroom count:</strong>
-  <%= @listing.bedroom_count %>
-</p>
-
-<p>
-  <strong>Bathroom count:</strong>
-  <%= @listing.bathroom_count %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Night fee cents:</strong>
-  <%= @listing.night_fee %>
-</p>
-
-<p>
-  <strong>Cleaning fee cents:</strong>
-  <%= @listing.cleaning_fee %>
-</p>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<div class="jumbotron">
+  <h2><%= @listing.title %></h2>
+  <p><%= image_tag @listing.image_url if @listing.image %></p>
+  <p><strong><%= @listing.description %></strong></p>
+  <p><strong>Address: </strong><%= @listing.full_address %></p>
+  <p><strong>Coords: </strong><%= @listing.latitude %>, <%= @listing.longitude %></p>
+  <p><strong>Beds: </strong><%= @listing.bed_count %></p>
+  <p><strong>Bedrooms: </strong><%= @listing.bedroom_count %></p>
+  <p><strong>Bathrooms: </strong><%= @listing.bathroom_count %></p>
+  <p><strong>Per Night: </strong><%= @listing.night_fee %></p>
+  <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
+  <br>
+  <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-danger' %>
+  <%= link_to 'Back', listings_path, class: 'btn btn-primary' %>
+</div>

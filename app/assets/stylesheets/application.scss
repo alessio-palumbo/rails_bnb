@@ -1,1 +1,7 @@
-@import 'bootstrap'
+@import 'bootstrap';
+@import 'listings';
+@import 'messages';
+
+.jumbotron {
+  padding: 40px;
+}

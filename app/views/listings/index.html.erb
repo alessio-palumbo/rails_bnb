@@ -1,47 +1,33 @@
-<p id="notice"><%= notice %></p>
+<nav class="navbar d-flex"> 
+  <div>
+    <%= link_to 'New Listing', new_listing_path, class: 'btn btn-success' %> 
+    <%= link_to 'My Conversations', conversations_path, class: 'btn btn-info' %>
+  </div>
+  <p>Logged as: <%= current_user.email %></p>
+</nav>
+  <h1 class="text-center">Listings</h1> 
 
-<h1>Listings</h1>
+<div class="row jumbotron">
+  <% @listings.each do |listing| %>
+        <div class="col-md-3">
+          <% if listing.image %>
+            <p><%= image_tag listing.image_url %>
+          <% end %>
+          <h4><%= link_to listing.title, listing %></h4>
+          <p><strong><%= listing.description %></strong></p>
+          <p><em><%= listing.full_address %></em></p>
+          <p>Beds: <%= listing.bed_count %></p>
+          <p>Bedrooms: <%= listing.bedroom_count %>
+          <p>Bathrooms: <%= listing.bathroom_count %></p>
+          <p>Per night: <%= listing.night_fee %></p>
+          <p>Cleaning: <%= listing.cleaning_fee %>/w</p>
+          <br>
+          <% if listing.host_id == current_user.id %>
+            <p><%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-danger' %></p>
+          <% else %>
+            <p><%= link_to 'Contact', new_conversation_path, class: 'btn btn-primary' %></p>
+          <% end %>
+         </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Street address</th>
-      <th>City</th>
-      <th>Country code</th>
-      <th>Bed count</th>
-      <th>Bedroom count</th>
-      <th>Bathroom count</th>
-      <th>Description</th>
-      <th>Night fee cents</th>
-      <th>Cleaning fee cents</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.title %></td>
-        <% if listing.image %>
-          <td><%= image_tag listing.image_url %>
-        <% end %>
-        <td><%= listing.full_address %></td>
-        <td><%= listing.bed_count %></td>
-        <td><%= listing.bedroom_count %></td>
-        <td><%= listing.bathroom_count %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.night_fee_cents %></td>
-        <td><%= listing.cleaning_fee_cents %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Listing', new_listing_path %>

@@ -38,17 +38,13 @@
 
   <div class="field">
     <%= form.label :bed_count %>
-    <%= form.number_field :bed_count, id: :listing_bed_count %>
-  </div>
+    <%= form.select :bed_count, [1,2,3,4,5,6,7,8,9,10], id: :listing_bed_count %>
 
-  <div class="field">
     <%= form.label :bedroom_count %>
-    <%= form.number_field :bedroom_count, id: :listing_bedroom_count %>
-  </div>
-
-  <div class="field">
+    <%= form.select :bedroom_count, [1,2,3,4,5], id: :listing_bedroom_count %>
+  
     <%= form.label :bathroom_count %>
-    <%= form.number_field :bathroom_count, id: :listing_bathroom_count %>
+    <%= form.select :bathroom_count, [1,2,3], id: :listing_bathroom_count  %>
   </div>
 
   <div class="field">
@@ -57,16 +53,19 @@
   </div>
 
   <div class="field">
-    <%= form.label :night_fee_cents %>
-    <%= form.number_field :night_fee_cents, id: :listing_night_fee_cents %>
+    <%= form.label :night_fee %>
+    <%= form.number_field :night_fee , id: :listing_night_fee_cents %>
   </div>
 
   <div class="field">
-    <%= form.label :cleaning_fee_cents %>
-    <%= form.number_field :cleaning_fee_cents, id: :listing_cleaning_fee_cents %>
+    <%= form.label :cleaning_fee %>
+    <%= form.number_field :cleaning, id: :listing_cleaning_fee_cents %>
   </div>
 
+  <br>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
+    <%= link_to 'Back', listings_path, class: 'btn btn-primary' %>
   </div>
 <% end %>

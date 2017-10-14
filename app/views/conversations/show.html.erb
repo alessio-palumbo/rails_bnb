@@ -1,0 +1,11 @@
+<h2>Conversation</h2>
+
+<% @conversation.messages.each_with_index do |message, index| %>
+  <div class="<%= message.user_id == current_user.id ? 'bg-warning' : 'bg-primary text-white' %>">
+    <p><strong><%= @conversation.name(message.user_id) %></strong> |
+    <em><%= message.created_at %></em></p>
+    <p><%= message.body %></p>
+  </div>
+<% end %>
+
+<%= render 'messages/form', message: @message %>

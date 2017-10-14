@@ -1,11 +1,12 @@
 class Listing < ApplicationRecord
-  include ImageUploader::Attachment.new(:image) 
+  include ImageUploader::Attachment.new(:image)
+
+  # , foreign_key: 'host_id', class_name: 'User'
+  belongs_to :host, class_name: 'User' 
+  has_many :conversations
 
   geocoded_by :full_address
   after_validation :geocode
-
-  # monetize :night_fee_cents, :cleaning_fee_cents
-
 
   def country
     ISO3166::Country.new(country_code.upcase)
@@ -16,10 +17,10 @@ class Listing < ApplicationRecord
   end
 
   def night_fee 
-    Money.new(night_fee_cents, 'AUD').format
+    Money.new(night_fee_cents * 100, 'AUD').format
   end
 
   def cleaning_fee 
-    Money.new(cleaning_fee_cents, 'AUD').format
+    Money.new(cleaning_fee_cents * 100, 'AUD').format
   end
 end
