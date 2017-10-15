@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20171013040806) do
     t.integer "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["guest_id"], name: "index_conversations_on_guest_id", unique: true
+    t.index ["guest_id"], name: "index_conversations_on_guest_id"
     t.index ["host_id", "guest_id"], name: "index_conversations_on_host_id_and_guest_id", unique: true
-    t.index ["host_id"], name: "index_conversations_on_host_id", unique: true
+    t.index ["host_id"], name: "index_conversations_on_host_id"
   end
 
   create_table "listings", force: :cascade do |t|

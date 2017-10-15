@@ -6,9 +6,6 @@ class User < ApplicationRecord
 
         #  , foreign_key: 'host_id', class_name: 'User'
   has_many :listings, foreign_key: 'host_id', dependent: :destroy
-  has_many :host_conversations, class_name: 'Conversation', foreign_key: 'host_id', dependent: :destroy
-  has_many :guest_conversations, class_name: 'Conversation', foreign_key: 'guest_id', dependent: :destroy
-  has_many :messages, through: :host_conversations, dependent: :destroy
-  has_many :messages, through: :guest_conversations, dependent: :destroy
-  
+  has_many :conversations, foreign_key: 'guest_id', dependent: :destroy
+  has_many :messages, through: :conversations, dependent: :destroy  
 end

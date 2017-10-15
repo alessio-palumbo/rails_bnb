@@ -1,9 +1,10 @@
 <h1 class="text-center">My Conversations</h1>
 <br>
 <% @conversations.each do |conversation| %>
-  <h3>Conversation with: <%= conversation.host_id == current_user.id ? 
-  conversation.name(conversation.guest_id) : conversation.name(conversation.host_id)%></h3>
+  <h3><%= conversation.listing.title %></h3>
+  <p>Conversation with: <%= conversation.host_id == current_user.id ? 
+  conversation.name(conversation.guest_id) : conversation.name(conversation.host_id)%></p>
   <p>Total messages: <%= conversation.messages.count %></p>
-  <p>Last message: <%= conversation.messages.last.created_at %></p>
+  <p>Last message: <%= conversation.messages.last.created_at.to_time.strftime('%a, %b %e, %l:%M %p') %></p>
   <%= link_to 'Show Conversation', conversation, class: 'btn btn succes' %>
 <% end %>

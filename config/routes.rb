@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
-
+  root 'listing#index'
 
   devise_for :users
   resources :listings
   resources :conversations, only: [:index, :show, :new]
-  resources :messages, only: [:create]
+  resources :messages, only: [:new, :create]
 
   get '/support' => 'support#new'
   post '/support' => 'support#create'

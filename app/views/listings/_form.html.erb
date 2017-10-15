@@ -37,13 +37,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :bed_count %>
+    <%= form.label :beds %>
     <%= form.select :bed_count, [1,2,3,4,5,6,7,8,9,10], id: :listing_bed_count %>
-
-    <%= form.label :bedroom_count %>
+    <br>
+    <%= form.label :bedrooms %>
     <%= form.select :bedroom_count, [1,2,3,4,5], id: :listing_bedroom_count %>
-  
-    <%= form.label :bathroom_count %>
+    <br> 
+    <%= form.label :bathrooms %>
     <%= form.select :bathroom_count, [1,2,3], id: :listing_bathroom_count  %>
   </div>
 
@@ -53,13 +53,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :night_fee %>
-    <%= form.number_field :night_fee , id: :listing_night_fee_cents %>
+    <%= form.label :night_fee_cents, 'Night Fee' %>
+    <%= form.number_field :night_fee_cents , id: :listing_night_fee_cents %>
   </div>
 
   <div class="field">
-    <%= form.label :cleaning_fee %>
-    <%= form.number_field :cleaning, id: :listing_cleaning_fee_cents %>
+    <%= form.label :cleaning_fee_cents, 'Cleaning Fee' %>
+    <%= form.number_field :cleaning_fee_cents, id: :listing_cleaning_fee_cents %>
   </div>
 
   <br>

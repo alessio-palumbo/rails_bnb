@@ -1,18 +1,12 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :edit, :update, :destroy]
+  before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.participating(current_user)
+    @conversations = Conversation.participating(current_user).order('updated_at DESC')
   end
 
   def show
-    @message = Message.new(conversation_id: @conversation.id)
-  end
-
-  def new
-  end
-
-  def create
+    @message = Message.new
   end
 
   private
@@ -20,4 +14,9 @@ class ConversationsController < ApplicationController
   def set_conversation
     @conversation = Conversation.find(params[:id])
   end
+
+  # def check_participating!
+  #   redirect_to root_path unless @conversation && @conversation.participates?(current_user)
+  # end
+
 end
