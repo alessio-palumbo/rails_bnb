@@ -1,8 +1,9 @@
 class Conversation < ApplicationRecord
-  validates :listing, uniqueness: { scope: :guest }
+  # validates :host, uniqueness: { scope: :guest }
 
   belongs_to :listing, foreign_key: 'host_id'
-  belongs_to :guest, class_name: 'User', foreign_key: 'guest_id'
+  belongs_to :host, class_name: 'User'
+  belongs_to :guest, class_name: 'User'
 
 
   has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy

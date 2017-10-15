@@ -1,6 +1,5 @@
 <%= form_for message do |f| %>
-  <%= hidden_field_tag 'conversation_id', @conversation.id if @conversation %>
-  <%= hidden_field_tag 'host_id', params[:host_id] %>
+  <%= hidden_field_tag 'conversation_id', @conversation.id %>
   <%= f.text_area :body, class: 'message block' %>
   <br>
   <%= f.submit 'Send', class: 'btn btn-success' %>

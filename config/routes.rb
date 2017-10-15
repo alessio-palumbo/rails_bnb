@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'listing#index'
+  root 'listings#index'
 
   devise_for :users
   resources :listings

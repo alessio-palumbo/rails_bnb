@@ -30,8 +30,9 @@
           <p>Cleaning: <%= listing.cleaning_fee %>/w</p>
           <br>
           <% if listing.host_id == current_user.id %>
-            <p><%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-danger' %></p>
-            <%# TODO: Link to listing messages, if any conversation %>
+            <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-danger' %>
+            <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
+                class: 'btn btn-primary' if Conversation.where(host_id: listing.host_id) %>
           <% else %>
             <%= link_to 'Contact', new_message_path(host_id: listing.host_id ), class: 'btn btn-primary' %>
           <% end %>

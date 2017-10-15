@@ -1,2 +1,8 @@
+<h2>New message to <%= @host.email %></h2>
 
-<%= render 'form', message: @message %>
+<%= form_for @message do |f| %>
+  <%= hidden_field_tag 'host_id', @host.id %>
+  <%= f.text_area :body, class: 'message block' %>
+  <br>
+  <%= f.submit 'Send', class: 'btn btn-success' %>
+<% end %>

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  # before_action :find_conversation!
+  before_action :find_conversation!
 
   def new
     redirect_to conversation_path(@conversation) and return if @conversation
@@ -7,11 +7,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-      @host = Listing.find_by(id: params[:host_id])
-      @conversation ||= Conversation.create!(host_id: @host.id, guest_id: current_user.id)
-      @message = Message.new(message_params)
-      @message.user_id = current_user.id
-      @message.conversation_id = @conversation.id
+    @conversation ||= Conversation.create!(guest_id: current_user.id, host_id: @host.id) 
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
+    @message.conversation_id = @conversation.id
 
     respond_to do |format|
       if @message.save!
@@ -30,15 +29,16 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body)
   end
 
-  # def find_conversation!
-  #   if params[:host_id]
-  #     @host = User.find_by(id: params[:host_id])
-  #     redirect_to(listings_path) and return unless @host
-  #     @conversation = Conversation.between(current_user.id, @host.id)[0]
-  #   else
-  #     @conversation = Conversation.find_by(id: params[:conversation_id])
-  #     redirect_to(listings_path) and return unless @conversation && @conversation.participates?(current_user)
-  #   end
-  # end
+  def find_conversation!
+    if params[:host_id]
+      @host = User.find_by(id: params[:host_id])
+      redirect_to(listings_path) and return unless @host
+      @conversation = Conversation.where(guest_id: current_user.id, host_id: @host.id).first
+    else
+      @conversation = Conversation.find_by(id: params[:conversation_id])
+      redirect_to(listings_path) and return unless @conversation
+      #  && @conversation.participates?(current_user)
+    end
+  end
 end
 
