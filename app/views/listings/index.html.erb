@@ -1,18 +1,4 @@
-<nav class="navbar d-flex"> 
-  <div>
-    <%= link_to 'New Listing', new_listing_path, class: 'btn btn-success' %> 
-    <%= link_to 'My Conversations', conversations_path, class: 'btn btn-info' %>
-  </div>
-  <p>Logged as: <%= current_user.email %>
-  <% if user_signed_in? %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %> 
-  <% else %>  
-    <%= link_to 'Sign in', new_user_session_path %>
-    <%= link_to 'Sign up', new_user_registration_path %>
-  <% end %>
-  </p>
-</nav>
-  <h1 class="text-center">Listings</h1> 
+<h1 class="text-center">Listings</h1> 
 
 <div class="row jumbotron">
   <% @listings.each do |listing| %>

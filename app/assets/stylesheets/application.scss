@@ -2,6 +2,118 @@
 @import 'listings';
 @import 'messages';
 
+// General styles
+* {
+  color: #484848;
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Roboto', 'Helvetica Neue', 'sans-serif';  
+}
 .jumbotron {
   padding: 40px;
+}
+ul {
+  list-style: none
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
+// Navbar
+.navbar {
+    padding: 10px 0 0 0;
+  .nv-top {
+    height: 42px;
+    margin-bottom: 15px;
+    width: 100%;
+    .nv-left {
+      .logo {
+        display: inline-block;
+        width: 70px;
+      }
+      .search {
+        height: 100%;
+        input {
+         vertical-align: top;
+         border-bottom: 2px solid transparent;
+         background-image: url('search.png');
+         background-repeat: no-repeat;
+         background-position: center; 
+        }
+        input::before {
+          content: 'Anywhere';
+        }
+        input:focus:before {
+          content: 'Destination, city, address';
+        }
+        input:focus {
+          border-bottom: 2px solid #008489;
+        }
+        input, button {
+          padding: 0;
+          background: white;
+          display: inline-block;
+          font-size: 16px;
+          height: 100%;
+          border: 1px solid #DBDBDB;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+          border-radius: 4px;
+          outline: none;
+          width: 200px;
+        }
+      }
+    }
+    .nv-right {
+      ul {
+        height: 100%;
+        display: table;
+        li {
+          display: table-cell;
+          height: 100%;
+          a {
+            font-size: 14px;
+            padding: 9px 10px;
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            border-bottom: 2px solid transparent;
+          }
+          a:hover {
+            border-bottom: 2px solid #484848;
+          }
+        }
+      }
+    }
+  }
+  .nv-bottom {
+    height: 42px;
+    ul {
+      height: 100%;
+      display: table;
+      padding-left: 0;
+      li {
+        display: table-cell;
+        height: 100%;
+        a {
+          font-size: 11px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.07em;
+          padding: 10px 10px;
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          border-bottom: 2px solid transparent;
+        }
+        a:hover {
+          color: #008489;
+          border-bottom: 2px solid #008489;
+        }
+      }
+    }
+  }
 }
