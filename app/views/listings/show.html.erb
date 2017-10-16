@@ -5,9 +5,9 @@
   <p><strong><%= @listing.description %></strong></p>
   <p><strong>Address: </strong><%= @listing.full_address %></p>
   <p><strong>Coords: </strong><%= @listing.latitude %>, <%= @listing.longitude %></p>
-  <p><strong>Beds: </strong><%= @listing.bed_count %></p>
-  <p><strong>Bedrooms: </strong><%= @listing.bedroom_count %></p>
-  <p><strong>Bathrooms: </strong><%= @listing.bathroom_count %></p>
+  <p class="beds"><%= @listing.bed_count %></p>
+  <p class="bedrooms"></strong><%= @listing.bedroom_count %></p>
+  <p class="bathrooms"></strong><%= @listing.bathroom_count %></p>
   <p><strong>Per Night: </strong><%= @listing.night_fee %></p>
   <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
   <br>

@@ -1,29 +1,25 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
   <% @listings.each do |listing| %>
     <div class="figure">
       <% if listing.image %>
-        <p><%= image_tag listing.image_url %>
+        <%= link_to image_tag(listing.image_url), listing_path(listing) %>
       <% end %>
-      <h4><%= link_to listing.title, listing %></h4>
-      <p><strong><%= listing.description %></strong></p>
-      <p><em><%= listing.full_address %></em></p>
-      <p>Beds: <%= listing.bed_count %></p>
-      <p>Bedrooms: <%= listing.bedroom_count %>
-      <p>Bathrooms: <%= listing.bathroom_count %></p>
-      <p>Per night: <%= listing.night_fee %></p>
-      <p>Cleaning: <%= listing.cleaning_fee %>/w</p>
-      <br>
+      <p><strong><%= listing.night_fee %> / <%= listing.description %></strong></p>
+      <p class="bedrooms"><%= listing.bedroom_count %> |
+      <span class="bathrooms"><%= listing.bathroom_count %></span></p>
       <% if listing.host_id == current_user.id %>
         <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-danger' %>
         <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
             class: 'btn btn-primary' if Conversation.where(host_id: listing.host_id) %>
       <% else %>
-        <%= link_to 'Contact', new_message_path(host_id: listing.host_id ), class: 'btn btn-primary' %>
+        <%= link_to 'Contact', new_message_path(host_id: listing.host_id ), class: 'contact' %>
       <% end %>
     </div>
   <% end %>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-3">
+    <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413&amp;key=AIzaSyARfRdxJ2qK1Cn-QnDbdMrZHatNIOW-Vjo"></iframe>
+  </div>
 </div>
 
