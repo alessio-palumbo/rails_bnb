@@ -9,39 +9,39 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
 
-  <body>
-    <div class="container">
-      <%# Navbar %>
-      <nav class="navbar">
-        <div class="nv-top d-flex justify-content-between">
-          <div class="nv-left">
-            <%# <img src="/images/logo.png" id="logo" alt="logo"> %>
-            <div class="search">
-              <input type="search" ><button type="button"></button><button type="button"></button>
-            </div>
-          </div>
-          <div class="nv-right">
-            <ul>
-              <li><a href="#">Start earning with Airbnb</a></li>
-              <li><a href="#">Help</a></li>
-              <% if user_signed_in? %> 
-                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-              <% else %>
-                <li><a href="/users/sign_up">Sign Up</a></li>
-                <li><a href="/users/sign_in">Log In</a></li>
-              <% end %>
-            </ul>
+  <body>  
+    <%# Navbar %>
+    <nav class="navbar">
+      <div class="nv-top d-flex justify-content-between">
+        <div class="nv-left">
+          <a href="/" class="logo"></a>
+          <div class="search">
+            <input type="search" placeholder="Anywhere" ><button type="button"></button><button type="button"></button>
           </div>
         </div>
-        <div class="nv-bottom">
+        <div class="nv-right">
           <ul>
-            <li><a href="/conversations">My Conversations</a></li>
-            <li><a href="/">Listings</a></li>
-            <li><a href="#">Experiences</a></li>
-            <li><a href="#">Restaurants</a></li>
+            <li><a href="#">Start earning with Airbnb</a></li>
+            <li><a href="#">Help</a></li>
+            <% if user_signed_in? %> 
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            <% else %>
+              <li><a href="/users/sign_up">Sign Up</a></li>
+              <li><a href="/users/sign_in">Log In</a></li>
+            <% end %>
           </ul>
         </div>
-      </nav>
+      </div>
+      <div class="nv-bottom">
+        <ul>
+          <li><a href="/conversations">My Conversations</a></li>
+          <li><a href="/">Listings</a></li>
+          <li><a href="#">Experiences</a></li>
+          <li><a href="#">Restaurants</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
       <%= yield %>
     </div>
   </body>
