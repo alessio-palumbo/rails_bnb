@@ -1,17 +1,46 @@
+<br>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
+    <div class="figure show">
+      <p><%= image_tag @listing.image_url if @listing.image %></p>
+      <h3><%= @listing.title %></h3>
+      <p><strong><%= @listing.description %></strong></p>
+      <br>
+      <p><strong>Address: </strong><%= @listing.full_address %></p>
+      <p><strong>Coords: </strong><%= @listing.latitude %>, <%= @listing.longitude %></p>
+      <p class="bedrooms"></strong><%= @listing.bedroom_count %> |
+      <span class="bathrooms"></strong><%= @listing.bathroom_count %></span></p>
+      <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
+      <br>
+      <%= link_to 'Edit', edit_listing_path(@listing), 
+          class: 'btn btn-danger' if @listing.host_id == current_user.id %>
+      <%= link_to 'Back', listings_path, class: "text-primary" %>
+    </div>
+  </div>
 
-<div class="jumbotron">
-  <h2><%= @listing.title %></h2>
-  <p><%= image_tag @listing.image_url if @listing.image %></p>
-  <p><strong><%= @listing.description %></strong></p>
-  <p><strong>Address: </strong><%= @listing.full_address %></p>
-  <p><strong>Coords: </strong><%= @listing.latitude %>, <%= @listing.longitude %></p>
-  <p class="beds"><%= @listing.bed_count %></p>
-  <p class="bedrooms"></strong><%= @listing.bedroom_count %></p>
-  <p class="bathrooms"></strong><%= @listing.bathroom_count %></p>
-  <p><strong>Per Night: </strong><%= @listing.night_fee %></p>
-  <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
-  <br>
-  <%= link_to 'Edit', edit_listing_path(@listing), 
-      class: 'btn btn-danger' if @listing.host_id == current_user.id %>
-  <%= link_to 'Back', listings_path, class: 'btn btn-primary' %>
+  <div class="col-md-5">
+    <h3>Book</h3>
+    <p><%= @listing.night_fee %> per night</p>
+    <%= form_with(model: @new_booking, local: true) do |f| %>
+      <%= f.hidden_field :listing_id %>
+      <div class="form">
+        <%= f.label :check_in_at, 'Check in' %>
+        <%= f.date_field :check_in_at %>
+      </div>
+
+      <div class="form">
+        <%= f.label :check_out_at, 'Check out' %>
+        <%= f.date_field :check_out_at %>
+      </div>
+
+      <div class="form">
+        <%= f.label :guest_count, 'Guest number' %>
+        <%= f.select :guest_count, [1,2,3,4,5,6,7,8] %>
+      </div>
+
+      <%= f.submit 'Book' %>
+    <% end %>
+  <div>
+  <div class="col-md-1"></div>
 </div>

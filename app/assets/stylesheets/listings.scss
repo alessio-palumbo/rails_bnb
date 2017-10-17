@@ -1,3 +1,25 @@
+// index
+.menu {
+  padding: 0;
+  li {
+  display: inline;
+  font-size: 15px;
+  color: #767676;
+  margin: 10px;
+  }
+  a:after {
+    display: inline-block;
+    content: "";
+    vertical-align: super;
+    margin: 0 0 0 10px;
+    border: solid #008489;
+    border-width: 0 0.7px 0.7px 0;
+    display: inline-block;
+    padding: 2.5px;
+    transform: rotate(45deg);
+  }
+}
+
 p {
   margin: 5px;
 }
@@ -35,6 +57,7 @@ label {
   }
   .contact {
     display: inline-block;
+    line-height: 1em;
     text-align: center;
     position: relative;
     width: 100px;
@@ -47,8 +70,24 @@ label {
     border-radius: 4px;
   }
 }
+// map
 .map {
   width: 100%;
-  height: auto;
+  height: 100%;
   border: none;
+}
+// Show
+.show {
+  margin: 0 auto;
+  width: auto;
+}
+form {
+  margin-bottom: 20px;
+  .form {
+    font-size: 16px;
+  }
+  input[type=submit] {
+    width: 100px;
+    
+  }
 }

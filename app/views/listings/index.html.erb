@@ -1,3 +1,11 @@
+<ul class="menu">
+  <li><a href="#">Room type</a></li>  
+  <li><a href="#">Price range</a></li>  
+  <li><a href="#">Instant book</a></li>  
+  <li><a href="#">More filters</a></li>  
+</ul>
+<br>
+
 <div class="row">
   <div class="col-md-9">
   <% @listings.each do |listing| %>
@@ -13,13 +21,13 @@
         <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
             class: 'btn btn-primary' if Conversation.where(host_id: listing.host_id) %>
       <% else %>
-        <%= link_to 'Contact', new_message_path(host_id: listing.host_id ), class: 'contact' %>
+        <%= link_to 'Contact', new_message_path(host_id: listing.host_id), class: 'contact' %>
       <% end %>
     </div>
   <% end %>
   </div>
-  <div class="col-md-3">
-    <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413&amp;key=AIzaSyARfRdxJ2qK1Cn-QnDbdMrZHatNIOW-Vjo"></iframe>
+  <div class="col-md-3 map">
+    <iframe src="https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413&amp;key=AIzaSyARfRdxJ2qK1Cn-QnDbdMrZHatNIOW-Vjo"></iframe>
   </div>
 </div>
 

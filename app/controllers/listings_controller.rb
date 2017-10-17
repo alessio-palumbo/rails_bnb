@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @new_booking = Booking.new(check_in_at: Date.today, listing_id: @listing.id)
   end
 
   def new

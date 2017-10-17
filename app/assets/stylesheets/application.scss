@@ -28,6 +28,19 @@ a:hover {
   padding: 20px 20px;
 
 }
+input, select {
+  background: white;
+  border: 1px solid #DBDBDB;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  outline: none;
+  font-size: 16px;
+  border-radius: 4px;
+}
+input {
+  padding: 0;
+  height: 100%;
+  width: 200px;
+}
 // Navbar
 .navbar {
     padding: 20px 0 0 20px;
@@ -60,12 +73,6 @@ a:hover {
          background-repeat: no-repeat;
          background-size: 100%; 
          background-position: 5px, 5px;
-        }
-        input:before {
-          content: 'Anywhere';
-        }
-        input:focus:before {
-          content: 'Destination, city, address';
         }
         input:focus {
           border-bottom: 2px solid #008489;
