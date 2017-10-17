@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   include ImageUploader::Attachment.new(:image)
 
-  has_one :host, class_name: 'User' 
+  belongs_to :host, class_name: 'User', foreign_key: 'host_id'
   has_many :conversations, foreign_key: 'host_id'
 
   geocoded_by :full_address

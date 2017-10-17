@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
   root 'listings#index'
 
   devise_for :users

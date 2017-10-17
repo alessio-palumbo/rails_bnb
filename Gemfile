@@ -37,6 +37,8 @@ gem 'geocoder'
 gem 'money-rails', '~>1'
 gem 'shrine'
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'twilio-ruby', '~> 5.4.0'
+gem 'omniauth-google-oauth2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
