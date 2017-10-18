@@ -1,24 +1,18 @@
-# README
+### MODELS
+- User
+- Profile
+- Listing 
+- Booking
+- Conversation
+- Message
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### UPLOADER
+- Shrine (with aws s3 for cloud storage)
 
-Things you may want to cover:
+### FUNCTIONALITIES
+- Create account and set a profile
+- Create Listing
+- Book Listing
+- Send booking confirmation through sms and email
+- Message listing's host for details
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
