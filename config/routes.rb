@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :profiles
   root 'listings#index'
-
-  devise_for :users
+  
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  resources :profiles
   resources :listings
   resources :conversations, only: [:index, :show, :new]
   resources :messages, only: [:new, :create]
