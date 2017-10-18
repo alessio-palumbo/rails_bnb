@@ -3,7 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+<<<<<<< HEAD
   devise :omniauthable, omniauth_providers: [:google_oauth2]
+=======
+>>>>>>> c752caf0e27d5615318b44df51409a55ae3cede3
 
         #  , foreign_key: 'host_id', class_name: 'User'
   has_many :listings, foreign_key: 'host_id', dependent: :destroy
@@ -19,12 +22,21 @@ class User < ApplicationRecord
     user = User.where(email: data['email']).first
 
     # Uncomment the section below if you want users to be created if they don't exist
+<<<<<<< HEAD
     unless user
         user = User.create(
            email: data['email'],
            password: Devise.friendly_token[0,20]
         )
     end
+=======
+    # unless user
+    #     user = User.create(name: data['name'],
+    #        email: data['email'],
+    #        password: Devise.friendly_token[0,20]
+    #     )
+    # end
+>>>>>>> c752caf0e27d5615318b44df51409a55ae3cede3
     user
 end
 end
