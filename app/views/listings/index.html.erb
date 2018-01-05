@@ -36,7 +36,7 @@
 
   <script>
     function initMap() {
-      const firstListing = {lat: <%= @listings && @listings.first.latitude.to_f %>, lng: <%= @listings && @listings.first.longitude.to_f %>};
+      const firstListing = {lat: <%= !@listings.nil? && @listings.first.latitude.to_f %>, lng: <%= !@listings.nil? && @listings.first.longitude.to_f %>};
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: firstListing
