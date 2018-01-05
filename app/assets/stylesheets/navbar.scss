@@ -1,0 +1,101 @@
+.navbar {
+  padding: 20px 0 0 20px;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  .nv-top {
+    height: 42px;
+    margin-bottom: 15px;
+    width: 100%;
+    .nv-left {
+      .logo:before {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        content: "";
+        background-image: url('logo.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+      .search {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        input {
+        vertical-align: top;
+        padding-left: 10px;
+        border-bottom: 2px solid transparent;
+        color: #484848;
+        background-image: url('search.png');
+        background-repeat: no-repeat;
+        background-size: 100%; 
+        background-position: 5px, 5px;
+        }
+        input:focus {
+          border-bottom: 2px solid #008489;
+        }
+        input, button {
+          padding: 0;
+          background: white;
+          display: inline-block;
+          font-size: 16px;
+          height: 100%;
+          border: 1px solid #DBDBDB;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+          border-radius: 4px;
+          outline: none;
+          width: 200px;
+        }
+      }
+    }
+    .nv-right {
+      ul {
+        height: 100%;
+        display: table;
+        li {
+          display: table-cell;
+          height: 100%;
+          a {
+            font-size: 14px;
+            padding: 9px 10px;
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            border-bottom: 2px solid transparent;
+            transition: border 0.3s;
+          }
+          a:hover {
+            border-bottom: 2px solid #484848;
+          }
+        }
+      }
+    }
+  }
+  .nv-bottom {
+    height: 42px;
+    ul {
+      height: 100%;
+      display: table;
+      padding-left: 0;
+      li {
+        display: table-cell;
+        height: 100%;
+        a {
+          font-size: 11px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.07em;
+          padding: 10px 10px;
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          border-bottom: 2px solid transparent;
+          transition: border 0.3s;
+        }
+        a:hover {
+          color: #008489;
+          border-bottom: 2px solid #008489;
+        }
+      }
+    }
+  }
+}

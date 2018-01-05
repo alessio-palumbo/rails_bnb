@@ -9,9 +9,9 @@ profile3 = Profile.create!(username: 'glenn', first_name: 'Glenn', last_name: 'D
 profile4 = Profile.create!(username: 'alex', first_name: 'Alex', last_name: 'Farries', mobile_number: "#{ENV['ALEX_MOBILE']}", user: user4)
 
 
-Listing.create!(title: "One bedroom", city: "Sydney", street_address: "51 Dover st", country_code: "au", bed_count: "4", bedroom_count: "3", bathroom_count: "2", description: "Quiet cozy place", night_fee_cents: 40, cleaning_fee_cents: 60, host_id: 1)
-Listing.create!(title: "Two bedroom", city: "Brisbane", street_address: "5 Lonsdale st", country_code: "au", bed_count: "5", bedroom_count: "2", bathroom_count: "1", description: "Beautiful area", night_fee_cents: 60, cleaning_fee_cents: 80, host_id: 2)
-Listing.create!(title: "Studio", city: "Perth", street_address: "65 Albert st", country_code: "au", bed_count: "7", bedroom_count: "3", bathroom_count: "5", description: "central", night_fee_cents: 100, cleaning_fee_cents: 70, host_id: 3)
+Listing.create!(title: "One bedroom", city: "Melbourne", street_address: "220 Spencer Street", country_code: "au", bed_count: "4", bedroom_count: "3", bathroom_count: "2", description: "Quiet cozy place", night_fee_cents: 40, cleaning_fee_cents: 60, host_id: 1)
+Listing.create!(title: "Two bedroom", city: "Melbourne", street_address: "5 Bourke Street", country_code: "au", bed_count: "5", bedroom_count: "2", bathroom_count: "1", description: "Beautiful area", night_fee_cents: 60, cleaning_fee_cents: 80, host_id: 2)
+Listing.create!(title: "Studio", city: "Melbourne", street_address: "65 Albert Park", country_code: "au", bed_count: "7", bedroom_count: "3", bathroom_count: "5", description: "central", night_fee_cents: 100, cleaning_fee_cents: 70, host_id: 3)
 
 conv1 = Conversation.create!(host_id: 1, guest_id: 4)
 
