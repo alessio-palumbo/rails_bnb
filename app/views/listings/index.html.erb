@@ -6,7 +6,9 @@
 </ul>
 <br>
 
-<% if @listings %>
+<% if @listings.nil? %>
+  <h1>There are currently no properties listed.</h1>
+<% else %>    
   <div class="row">
     <div class="col-md-9">
     <% @listings.each do |listing| %>
@@ -48,6 +50,4 @@
 
     <script async defer 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyI8EmokW5pwjYktSAQ_Q8S_438uOMong&callback=initMap"></script>
-<% else %>    
-  <h1>Welcome</h1>
 <% end %>
