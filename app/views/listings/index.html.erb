@@ -17,7 +17,7 @@
         <p><strong><%= listing.night_fee %> / <%= listing.description %></strong></p>
         <p class="bedrooms"><%= listing.bedroom_count %> |
         <span class="bathrooms"><%= listing.bathroom_count %></span></p>
-        <% if listing.host_id == current_user.id %>
+        <% if user_signed_in? && listing.host_id == current_user.id %>
           <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-danger' %>
           <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
               class: 'btn btn-primary' if Conversation.where(host_id: listing.host_id) %>
@@ -48,4 +48,6 @@
 
     <script async defer 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyI8EmokW5pwjYktSAQ_Q8S_438uOMong&callback=initMap"></script>
+<% else %>    
+  <h1>Welcome</h1>
 <% end %>

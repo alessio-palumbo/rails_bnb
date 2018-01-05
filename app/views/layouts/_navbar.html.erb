@@ -21,7 +21,9 @@
   </div>
   <div class="nv-bottom">
     <ul>
-      <li><a href="/conversations">My Conversations</a></li>
+      <% if user_signed_in? %>
+        <li><a href="/conversations">My Conversations</a></li>
+      <% end %>
       <li><a href="/">Listings</a></li>
       <li><a href="#">Experiences</a></li>
       <li><a href="#">Restaurants</a></li>
