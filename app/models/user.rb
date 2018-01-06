@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
-        #  , foreign_key: 'host_id', class_name: 'User'
+  #  , foreign_key: 'host_id', class_name: 'User'
   has_many :listings, foreign_key: 'host_id', dependent: :destroy
-  has_many :host_conversation, through: :listings, class_name: 'Conversation', foreign_key: 'host_id', dependent: :destroy
-  has_many :guest_conversations, class_name: 'Conversation', foreign_key: 'guest_id', dependent: :destroy
-  has_many :messages, through: :host_conversations, dependent: :destroy  
-  has_many :messages, through: :guest_conversations, dependent: :destroy  
+  has_many :conversations, through: :listings
+  has_many :messages, through: :conversations
+  # has_many :host_conversations, through: :listings, source: :conversations, foreign_key: 'host_id'
+  # has_many :guest_conversations, source: :conversations, foreign_key: 'guest_id'
+  # has_many :messages, through: :host_conversations, dependent: :destroy
+  # has_many :messages, through: :guest_conversations, dependent: :destroy
 
   has_one :profile, dependent: :destroy
 
@@ -26,5 +28,5 @@ class User < ApplicationRecord
     #     )
     # end
     user
-end
+  end
 end

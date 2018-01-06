@@ -31,12 +31,9 @@
     <%= form.text_field :mobile_number, id: :profile_mobile_number %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :profile_user_id %>
-  </div>
-
+  <br />
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'btn btn-sm btn-danger' %>
   </div>
 <% end %>

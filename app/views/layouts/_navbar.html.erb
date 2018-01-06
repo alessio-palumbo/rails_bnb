@@ -23,6 +23,7 @@
     <ul>
       <% if user_signed_in? %>
         <li><a href="/conversations">My Conversations</a></li>
+        <li><a href="/profiles/<%= current_user.profile.id %>">My Profile</a></li>
       <% end %>
       <li><a href="/">Listings</a></li>
       <li><a href="#">Experiences</a></li>

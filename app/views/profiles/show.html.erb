@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<br />
 <p>
   <strong>Username:</strong>
   <%= @profile.username %>
@@ -20,10 +21,8 @@
   <%= @profile.mobile_number %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<br />
+<%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-sm btn-danger' %>
+<hr /> 
+<%= link_to 'Back', :back, class: 'btn btn-sm btn-dark' %> | 
+<%= link_to 'Delete Account', registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-sm btn-danger' %>
