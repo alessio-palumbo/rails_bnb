@@ -38,15 +38,21 @@
 
   <script>
     function initMap() {
-      // const firstListing = {lat: <%= @listings.first.latitude.to_f || 0 %>, lng: <%= @listings && @listings.first.longitude.to_f || 0 %>};
+      const listings = <%= @listings.to_json.html_safe %>
+      if (!listings) {
+        return
+      } 
+      const firstListing = {lat: parseInt(listings[0].latitude), lng: parseInt(listings[0].longitude)};
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: firstListing
       });
-      let marker = new google.maps.Marker({
-        position: firstListing,
-        map: map
-      });
+      for (let i = 0; i < listings.length; i++) {
+        let marker = new google.maps.Marker({
+          position: {lat: parseInt(listings[i].latitude), lng: parseInt(listings[i].longitude)},
+          map: map
+        });
+      }     
     }
   </script>
 
