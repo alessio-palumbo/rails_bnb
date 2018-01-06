@@ -17,18 +17,23 @@
   </div>
 
   <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :listing_description %>
+  </div>
+
+  <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image, id: :listing_image %>
   </div>
 
   <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address, id: :listing_street_address %>
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :listing_city %>
   </div>
 
   <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :listing_city %>
+    <%= form.label :street_address %>
+    <%= form.text_field :street_address, id: :listing_street_address %>
   </div>
 
   <div class="field">
@@ -47,10 +52,6 @@
     <%= form.select :bathroom_count, [1,2,3], id: :listing_bathroom_count  %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :listing_description %>
-  </div>
 
   <div class="field">
     <%= form.label :night_fee_cents, 'Night Fee' %>

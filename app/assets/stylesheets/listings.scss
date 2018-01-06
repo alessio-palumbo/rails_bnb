@@ -32,53 +32,36 @@ label {
   text-align: left;
 }
 .figure {
-  box-sizing: border-box;
-  width: 49%;
+  
   img {
     width: 100%;
-    max-height: 240px;
     border-radius: 5px;
+    margin-bottom: 5px;
   }
   p {
+    line-height: 20px;
+    padding: 0;
     margin: 2px;
-    font-size: 18px;
   }
-  .beds:before, .bedrooms:before, .bathrooms:before {
-    content: '';
-    width: 20px;
-    height: 18px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: 100%;
+  .title {
+    font-size: 0.6em;
+    color: rgb(165, 41, 3);
+    text-transform: uppercase;
+    line-height: 18px;
   }
-  .beds:before {
-    background-image: url('beds.png');
+  .description {
+    color: #484848;
   }
-  .bedrooms:before {
-    background-image: url('bedrooms.png');
-  }
-  .bathrooms:before {
-    background-image: url('baths.png');
-  }
-  .contact {
-    display: inline-block;
-    line-height: 1em;
-    text-align: center;
-    position: relative;
-    width: 100px;
-    left: 300px;
-    bottom: 50px;
-    height: 25px;
-    background: white;
-    color: red;
-    border: 1px solid red;
-    border-radius: 4px;
+  .price {
+    font-size: 0.8em;
+    font-weight: lighter;
   }
 }
 // map
 .map {
   padding: 0;
   margin: 0;
+  display: none;
 }
 #map {
   width: 100%;
@@ -98,5 +81,11 @@ form {
   input[type=submit] {
     width: 100px;
     
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .map {
+    display: block;
   }
 }
