@@ -7,7 +7,7 @@
     margin-bottom: 15px;
     width: 100%;
     .nv-left {
-      .logo:before {
+      .logo:before { 
         display: inline-block;
         width: 50px;
         height: 50px;
@@ -43,7 +43,8 @@
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
           border-radius: 4px;
           outline: none;
-          width: 200px;
+          max-width: 200px;
+          width: auto;
         }
       }
     }
