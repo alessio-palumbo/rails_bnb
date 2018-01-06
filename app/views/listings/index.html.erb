@@ -38,7 +38,7 @@
 
   <script>
     function initMap() {
-      const firstListing = {lat: <%= @listings.first.latitude.to_f || 0 %>, lng: <%= @listings && @listings.first.longitude.to_f || 0 %>};
+      // const firstListing = {lat: <%= @listings.first.latitude.to_f || 0 %>, lng: <%= @listings && @listings.first.longitude.to_f || 0 %>};
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: firstListing
