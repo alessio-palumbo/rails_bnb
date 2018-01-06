@@ -21,7 +21,7 @@
   </div>
   <div class="nv-bottom">
     <ul>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.profile %>
         <li><a href="/conversations">My Conversations</a></li>
         <li><a href="/profiles/<%= current_user.profile.id %>">My Profile</a></li>
       <% end %>
