@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, class: 'textarea-label' %>
     <%= form.text_area :description, id: :listing_description %>
   </div>
 
@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :country_code %>
-    <%= form.text_field :country_code, id: :listing_country_code %>
+    <%= form.text_field :country_code, placeholder: "e.g. AU for Australia",id: :listing_country_code %>
   </div>
 
   <div class="field">
@@ -66,7 +66,8 @@
   <br>
 
   <div class="actions">
-    <%= form.submit 'Update', class: 'btn btn-success' %>
-    <%= link_to 'Back', listings_path, class: 'btn btn-primary' %>
+    <%= form.submit 'Save', class: 'btn btn-sm btn-danger' %>
+    <hr />
+    <%= link_to 'Back', listings_path, class: 'btn btn-sm btn-dark' %>
   </div>
 <% end %>

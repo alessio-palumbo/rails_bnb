@@ -3,52 +3,47 @@
   border-bottom: 1px solid #e4e4e4;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   .nv-top {
-    height: 42px;
+    height: 50px;
     margin-bottom: 15px;
     width: 100%;
     .nv-left {
+      height: 100%;
+      width: 100%;
+      .logo {
+        display: inline-block;
+        padding-top: 7px;
+      }
       .logo:before { 
         display: inline-block;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         content: "";
         background-image: url('logo.png');
         background-repeat: no-repeat;
         background-size: 100%;
       }
       .search {
-        display: inline-block;
         vertical-align: top;
+        margin-left: 10px;
+        padding-left: 50px;
         height: 100%;
-        input {
-        vertical-align: top;
-        padding-left: 10px;
-        border-bottom: 2px solid transparent;
+        font-size: 0.9em;
+        border-radius: 4px;
+        border-bottom: 1px solid #DBDBDB;
+        outline: none;
         color: #484848;
         background-image: url('search.png');
         background-repeat: no-repeat;
-        background-size: 100%; 
-        background-position: 5px, 5px;
-        }
-        input:focus {
-          border-bottom: 2px solid #008489;
-        }
-        input, button {
-          padding: 0;
-          background: white;
-          display: inline-block;
-          font-size: 16px;
-          height: 100%;
-          border: 1px solid #DBDBDB;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-          border-radius: 4px;
-          outline: none;
-          max-width: 200px;
-          width: auto;
-        }
+        background-size: 30px; 
+        background-position: 5px, 15px;
+      }
+      .search:focus {
+        
       }
     }
     .nv-right {
+      display: none;
+      padding-top: 5px;
       ul {
         height: 100%;
         display: table;
@@ -99,4 +94,22 @@
       }
     }
   }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar .nv-top .nv-left .search {
+    width: 460px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .navbar .nv-top {
+    .nv-left {
+      width: 50%;
+    }
+    .nv-right {
+      display: block;
+    }
+  }
+
 }

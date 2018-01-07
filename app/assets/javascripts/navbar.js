@@ -1,4 +1,4 @@
 
 function changeInput() {
-  document.querySelector('.input').value = 'Clicked';
+  document.querySelector('.search').value = 'Destination, city, address';
 }

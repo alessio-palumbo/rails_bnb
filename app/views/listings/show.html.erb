@@ -4,24 +4,24 @@
   <div class="col-md-5">
     <div class="figure show">
       <p><%= image_tag @listing.image_url if @listing.image %></p>
-      <h3><%= @listing.title %></h3>
+      <h5><%= @listing.title %></h5>
       <p><strong><%= @listing.description %></strong></p>
       <br>
       <p><strong>Address: </strong><%= @listing.full_address %></p>
-      <p><strong>Coords: </strong><%= @listing.latitude %>, <%= @listing.longitude %></p>
-      <p class="bedrooms"></strong><%= @listing.bedroom_count %> |
-      <span class="bathrooms"></strong><%= @listing.bathroom_count %></span></p>
+      <p><strong>Bedrooms: </strong><%= @listing.bedroom_count %></p>
+      <p><strong>Bathrooms: </strong><%= @listing.bathroom_count %></p>
+      <p><strong>Rent: </strong><%= @listing.night_fee %>/n</p>
       <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
       <br>
       <%= link_to 'Edit', edit_listing_path(@listing), 
-          class: 'btn btn-danger' if @listing.host_id == current_user.id %>
-      <%= link_to 'Back', listings_path, class: "text-primary" %>
+          class: 'btn btn-sm btn-danger' if @listing.host_id == current_user.id %>
     </div>
   </div>
 
   <div class="col-md-5">
-    <h3>Book</h3>
+    <h4>Book</h4>
     <p><%= @listing.night_fee %> per night</p>
+    <br />
     <%= form_with(model: @new_booking, local: true) do |f| %>
       <%= f.hidden_field :listing_id %>
       <div class="form">
@@ -39,8 +39,14 @@
         <%= f.select :guest_count, [1,2,3,4,5,6,7,8] %>
       </div>
 
-      <%= f.submit 'Book' %>
+      <br />
+      <%= f.submit 'Book', class: 'btn btn-sm btn-danger' %>
     <% end %>
   <div>
   <div class="col-md-1"></div>
+</div>
+
+<div class='btn-back'>
+  <hr />
+  <%= link_to 'Back', listings_path, class: "btn btn-sm btn-dark" %>
 </div>

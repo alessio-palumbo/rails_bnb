@@ -3,59 +3,65 @@
   <li><a href="#">Price range</a></li>  
   <li><a href="#">Instant book</a></li>  
   <li><a href="#">More filters</a></li>  
+  <% if user_signed_in? %>
+    <%= link_to 'Add listing', new_listing_path, class: 'btn btn-sm btn-danger' %>
+  <% end %>
 </ul>
 <br>
 
+
 <% if @listings.nil? %>
   <h1>There are currently no properties listed.</h1>
-<% else %>    
-  <div class="row">
-    <div class="col-md-9">
-      <div class="row">
-        <% @listings.each do |listing| %>
-          <div class="col-sm-6 col-md-6 col-lg-4 figure">
-            <% if listing.image %>
-              <%= link_to image_tag(listing.image_url), listing_path(listing) %>
-            <% end %>
-            <p class='title'><strong><%= listing.title %> - <%= pluralize listing.bedroom_count, "Bed" %></strong></p>
-            <p class='description'><strong><%= listing.description %></strong></p>
-            <p class='price'>From <%= listing.night_fee %> per night</p>
-            <% if user_signed_in? && listing.host_id == current_user.id %>
-              <%= link_to 'Edit', edit_listing_path(listing), class: 'text-danger' %>
-              <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
-                  class: 'text-primary' if Conversation.where(host_id: listing.host_id) %>
-            <% else %>
-              <%= link_to 'Contact', new_message_path(host_id: listing.host_id), class: 'contact text-danger' %>
-            <% end %>
-          </div>
-        <% end %>
+<% else %>
+  <div class='container'>    
+    <div class="row">
+      <div class="col-lg-9 col-xl-9">
+        <div class="row">
+          <% @listings.each do |listing| %>
+            <div class="col-6 figure">
+              <% if listing.image %>
+                <%= link_to image_tag(listing.image_url), listing_path(listing) %>
+              <% end %>
+              <p class='title'><strong><%= listing.title %> - <%= pluralize listing.bedroom_count, "Bed" %></strong></p>
+              <p class='description'><strong><%= listing.description %></strong></p>
+              <p class='price'>From <%= listing.night_fee %> per night</p>
+              <% if user_signed_in? && listing.host_id == current_user.id %>
+                <%= link_to 'Edit', edit_listing_path(listing), class: 'text-danger' %>
+                <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
+                    class: 'text-primary' if Conversation.where(host_id: listing.host_id) %>
+              <% else %>
+                <%= link_to 'Contact', new_message_path(host_id: listing.host_id), class: 'contact text-danger' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-3 map">
+        <div id="map"></div>
       </div>
     </div>
-    <div class="col-md-3 map">
-      <div id="map"></div>
-    </div>
-  </div>
 
-  <script>
-    function initMap() {
-      const listings = <%= @listings.to_json.html_safe %>
-      if (!listings) {
-        return
-      } 
-      const firstListing = {lat: parseInt(listings[0].latitude), lng: parseInt(listings[0].longitude)};
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: firstListing
-      });
-      for (let i = 0; i < listings.length; i++) {
-        let marker = new google.maps.Marker({
-          position: {lat: parseInt(listings[i].latitude), lng: parseInt(listings[i].longitude)},
-          map: map
+    <script>
+      function initMap() {
+        const listings = <%= @listings.to_json.html_safe %>
+        if (!listings) {
+          return
+        } 
+        const firstListing = {lat: parseInt(listings[0].latitude), lng: parseInt(listings[0].longitude)};
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: firstListing
         });
-      }     
-    }
-  </script>
+        for (let i = 0; i < listings.length; i++) {
+          let marker = new google.maps.Marker({
+            position: {lat: parseInt(listings[i].latitude), lng: parseInt(listings[i].longitude)},
+            map: map
+          });
+        }     
+      }
+    </script>
 
     <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyI8EmokW5pwjYktSAQ_Q8S_438uOMong&callback=initMap"></script>
-<% end %>
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyI8EmokW5pwjYktSAQ_Q8S_438uOMong&callback=initMap"></script>
+    <% end %>
+  </div>

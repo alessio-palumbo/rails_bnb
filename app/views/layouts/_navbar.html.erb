@@ -1,10 +1,8 @@
 <nav class="navbar">
   <div class="nv-top d-flex justify-content-between">
     <div class="nv-left">
-      <a href="/" class="logo"></a>
-      <div class="search">
-        <input type="input" onClick="changeInput()" placeholder="Anywhere" class="input" ><button type="button"></button><button type="button"></button>
-      </div>
+      <a href="/listings" class="logo"></a>
+      <input type="input" onClick="changeInput()" placeholder="Anywhere" class="search" >
     </div>
     <div class="nv-right">
       <ul>
@@ -22,8 +20,8 @@
   <div class="nv-bottom">
     <ul>
       <% if user_signed_in? && current_user.profile %>
-        <li><a href="/conversations">My Conversations</a></li>
         <li><a href="/profiles/<%= current_user.profile.id %>">My Profile</a></li>
+        <li><a href="/conversations">Messages</a></li>
       <% end %>
       <li><a href="/">Listings</a></li>
       <li><a href="#">Experiences</a></li>
