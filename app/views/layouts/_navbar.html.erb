@@ -1,7 +1,23 @@
 <nav class="navbar">
   <div class="nv-top d-flex justify-content-between">
     <div class="nv-left">
-      <a href="/listings" class="logo"></a>
+      <a href="#" class="logo"></a>
+      <ul class='menu-sm'>
+        <li><a href='/'>Home</a></li>
+        <hr />
+        <li><a href='#'>RailsBnb for Work</a></li>
+        <hr />
+        <li><a href='#'>Host a home</a></li>
+        <li><a href='#'>Host an experience</a></li>
+        <% if user_signed_in? %> 
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><a href="/users/sign_up">Sign Up</a></li>
+          <li><a href="/users/sign_in">Log In</a></li>
+        <% end %>
+        <hr />
+        <li><a href='#'>Help</a></li>
+      </ul>
       <input type="input" onClick="changeInput()" placeholder="Anywhere" class="search" >
     </div>
     <div class="nv-right">
