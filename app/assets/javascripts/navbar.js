@@ -1,4 +1,4 @@
 
 function changeInput() {
-  document.querySelector('.search').value = 'Destination, city, address';
+  document.querySelector('.search').placeholder = 'Destination, city, address';
 }
