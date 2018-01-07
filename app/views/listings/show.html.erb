@@ -13,38 +13,42 @@
       <p><strong>Rent: </strong><%= @listing.night_fee %>/n</p>
       <p><strong>Cleaning: </strong><%= @listing.cleaning_fee %>/w</p>
       <br>
+      <%# Show edit button if listing belongs to current_user %>
       <%= link_to 'Edit', edit_listing_path(@listing), 
-          class: 'btn btn-sm btn-danger' if @listing.host_id == current_user.id %>
+        class: 'btn btn-sm btn-danger' if @listing.host_id == current_user.id %>
     </div>
   </div>
 
-  <div class="col-md-5">
-    <h4>Book</h4>
-    <p><%= @listing.night_fee %> per night</p>
-    <br />
-    <%= form_with(model: @new_booking, local: true) do |f| %>
-      <%= f.hidden_field :listing_id %>
-      <div class="form">
-        <%= f.label :check_in_at, 'Check in' %>
-        <%= f.date_field :check_in_at %>
-      </div>
-
-      <div class="form">
-        <%= f.label :check_out_at, 'Check out' %>
-        <%= f.date_field :check_out_at %>
-      </div>
-
-      <div class="form">
-        <%= f.label :guest_count, 'Guest number' %>
-        <%= f.select :guest_count, [1,2,3,4,5,6,7,8] %>
-      </div>
-
+  <%# Don't show booking if listing belongs to current_user %>
+  <% if @listing.host_id != current_user.id %>
+    <div class="col-md-5">
+      <h4>Book</h4>
+      <p><%= @listing.night_fee %> per night</p>
       <br />
-      <%= f.submit 'Book', class: 'btn btn-sm btn-danger' %>
-    <% end %>
-  <div>
-  <div class="col-md-1"></div>
-</div>
+      <%= form_with(model: @new_booking, local: true) do |f| %>
+        <%= f.hidden_field :listing_id %>
+        <div class="form">
+          <%= f.label :check_in_at, 'Check in' %>
+          <%= f.date_field :check_in_at %>
+        </div>
+
+        <div class="form">
+          <%= f.label :check_out_at, 'Check out' %>
+          <%= f.date_field :check_out_at %>
+        </div>
+
+        <div class="form">
+          <%= f.label :guest_count, 'Guest number' %>
+          <%= f.select :guest_count, [1,2,3,4,5,6,7,8] %>
+        </div>
+
+        <br />
+        <%= f.submit 'Book', class: 'btn btn-sm btn-danger' %>
+      <% end %>
+    <div>
+    <div class="col-md-1"></div>
+  <% end %>
+</div> <%# end row %>
 
 <div class='btn-back'>
   <hr />
