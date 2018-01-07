@@ -4,6 +4,12 @@
   <div class="col-md-5">
     <div class="figure show">
       <p><%= image_tag @listing.image_url if @listing.image %></p>
+      <% if user_signed_in? && @listing.host_id == current_user.id %>
+        <%= link_to 'Messages', new_message_path(host_id: @listing.host_id ), 
+            class: 'contact text-danger' if Conversation.where(host_id: @listing.host_id) %>
+      <% else %>
+        <%= link_to 'Contact', new_message_path(host_id: @listing.host_id), class: 'contact text-danger' %>
+      <% end %>
       <h5><%= @listing.title %></h5>
       <p><strong><%= @listing.description %></strong></p>
       <br>

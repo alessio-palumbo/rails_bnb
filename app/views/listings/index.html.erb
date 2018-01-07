@@ -22,16 +22,12 @@
               <% if listing.image %>
                 <%= link_to image_tag(listing.image_url), listing_path(listing) %>
               <% end %>
+              <% if user_signed_in? && listing.host_id != current_user.id %>
+                <%= link_to 'Contact', new_message_path(host_id: listing.host_id), class: 'contact text-danger' %>
+              <% end %>
               <p class='title'><strong><%= listing.title %> - <%= pluralize listing.bedroom_count, "Bed" %></strong></p>
               <p class='description'><strong><%= listing.description %></strong></p>
               <p class='price'>From <%= listing.night_fee %> per night</p>
-              <% if user_signed_in? && listing.host_id == current_user.id %>
-                <%= link_to 'Edit', edit_listing_path(listing), class: 'text-danger' %>
-                <%= link_to 'Messages', new_message_path(host_id: listing.host_id ), 
-                    class: 'text-primary' if Conversation.where(host_id: listing.host_id) %>
-              <% else %>
-                <%= link_to 'Contact', new_message_path(host_id: listing.host_id), class: 'contact text-danger' %>
-              <% end %>
             </div>
           <% end %>
         </div>
